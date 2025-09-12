@@ -37,7 +37,7 @@ $result = $conn->query($sql);
         <h2>Daftar Siswa</h2>
         
         <div style="margin-bottom:15px; text-align:right; width:90%;">
-            <a href="create.php" 
+            <a href="tambah.php" 
                style="background:#4CAF50; color:white; text-decoration:none; border-radius:5px;">
                + Tambah Data
             </a>
@@ -88,4 +88,5 @@ $result = $conn->query($sql);
         </table>
 
     </main>
+
 
