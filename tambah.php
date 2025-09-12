@@ -1,8 +1,8 @@
 <?php
 
-include 'koneksi.php'; // Pastikan file koneksi.php ada dan aman
+include 'koneksi.php'; 
 
-// Menangani penambahan barang
+
 if (isset($_POST['submit'])) {
     $nama = $_POST['nama'];
     $kelas = $_POST['kelas'];
@@ -10,12 +10,8 @@ if (isset($_POST['submit'])) {
     $email = $_POST['email'];
     $no_hp = $_POST['no_hp'];
 
-    // Validasi input (PENTING untuk keamanan)
-    $nama = htmlspecialchars($nama, ENT_QUOTES, 'UTF-8'); //mencegah XSS
+    $nama = htmlspecialchars($nama, ENT_QUOTES, 'UTF-8'); 
     
-
-
-    // Pengolahan File Upload
     $target_dir = "img/";
     if (!is_dir($target_dir)) {
         mkdir($target_dir, 0777, true);
@@ -26,7 +22,7 @@ if (isset($_POST['submit'])) {
     $target_file = $target_dir . basename($foto);
 
 
-    // Validasi tipe file (PENTING untuk keamanan) - tambahkan validasi ekstensi file
+
     $allowed_types = array('jpg', 'jpeg', 'png', 'gif');
     $file_ext = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
 
@@ -55,7 +51,7 @@ if (isset($_POST['submit'])) {
     }
 }
 
-// Ambil data barang
+
 $sql = "SELECT * FROM data_siswa";
 $result = $conn->query($sql);
 ?>
@@ -103,3 +99,4 @@ $result = $conn->query($sql);
             </button>
         </form>
     </div>
+
