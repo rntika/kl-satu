@@ -1,24 +1,16 @@
 <?php
-// Koneksi ke database
-$koneksi = mysqli_connect("localhost", "root", "", "");
+include 'koneksi.php';
 
-// Cek koneksi
-if (!$koneksi) {
-    die("Koneksi gagal: " . mysqli_connect_error());
-}
+if (isset($_GET['id_siswa'])) {
+    $id = $_GET['id_siswa'];
 
-// Ambil id dari URL
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-
-    // Query hapus data
-    $query = "DELETE FROM siswa WHERE id = '$id'";
-    $result = mysqli_query($koneksi, $query);
+    $query = "DELETE FROM siswa WHERE id_siswa = '$id_siswa'";
+    $result = mysqli_query($conn, $query);
 
     if ($result) {
         echo "<script>alert('Data berhasil dihapus!'); window.location='index.php';</script>";
     } else {
-        echo "Error: " . mysqli_error($koneksi);
+        echo "Error: " . mysqli_error($conn);
     }
 } else {
     echo "ID tidak ditemukan.";
