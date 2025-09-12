@@ -1,7 +1,6 @@
 <?php
 include 'koneksi.php';
 
-// Proses tambah data
 if (isset($_POST['tambah'])) {
     $nama    = $_POST['nama'];
     $kelas   = $_POST['kelas'];
@@ -9,7 +8,7 @@ if (isset($_POST['tambah'])) {
     $email   = $_POST['email'];
     $no_hp   = $_POST['no_hp'];
 
-    // Upload foto
+
     $foto = $_FILES['foto']['name'];
     $tmp_name = $_FILES['foto']['tmp_name'];
 
@@ -20,7 +19,7 @@ if (isset($_POST['tambah'])) {
     $target_file = $target_dir . basename($foto);
     move_uploaded_file($tmp_name, $target_file);
 
-    // Insert ke database
+    
     $sql = "INSERT INTO data_siswa (nama, foto, kelas, jurusan, email, no_hp) VALUES (?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ssssss", $nama, $foto, $kelas, $jurusan, $email, $no_hp);
@@ -30,13 +29,20 @@ if (isset($_POST['tambah'])) {
     exit;
 }
 
-// Ambil semua data siswa
 $sql = "SELECT * FROM data_siswa";
 $result = $conn->query($sql);
 ?>
 <center>
     <main>
         <h2>Daftar Siswa</h2>
+        
+        <div style="margin-bottom:15px; text-align:right; width:90%;">
+            <a href="create.php" 
+               style="padding:8px 15px; background:#4CAF50; color:white; text-decoration:none; border-radius:5px;">
+               + Tambah Data
+            </a>
+        </div>
+
         <table border="1" cellpadding="8" cellspacing="0">
             <thead>
                 <tr>
@@ -80,4 +86,5 @@ $result = $conn->query($sql);
                 <?php } ?>
             </tbody>
         </table>
+
     </main>
