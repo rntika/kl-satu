@@ -38,7 +38,7 @@ $result = $conn->query($sql);
         
         <div style="margin-bottom:15px; text-align:right; width:90%;">
             <a href="create.php" 
-               style="padding:8px 15px; background:#4CAF50; color:white; text-decoration:none; border-radius:5px;">
+               style="background:#4CAF50; color:white; text-decoration:none; border-radius:5px;">
                + Tambah Data
             </a>
         </div>
@@ -88,3 +88,4 @@ $result = $conn->query($sql);
         </table>
 
     </main>
+
