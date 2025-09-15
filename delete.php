@@ -2,9 +2,9 @@
 include 'koneksi.php';
 
 if (isset($_GET['id_siswa'])) {
-    $id = $_GET['id_siswa'];
+    $id_siswa = $_GET['id_siswa'];
 
-    $query = "DELETE FROM siswa WHERE id_siswa = '$id_siswa'";
+    $query = "DELETE FROM data_siswa WHERE id_siswa = '$id_siswa'";
     $result = mysqli_query($conn, $query);
 
     if ($result) {
@@ -13,6 +13,5 @@ if (isset($_GET['id_siswa'])) {
         echo "Error: " . mysqli_error($conn);
     }
 } else {
-    echo "ID tidak ditemukan.";
+    echo "<script>alert('ID tidak ditemukan.'); window.location='index.php';</script>";
 }
-?>
